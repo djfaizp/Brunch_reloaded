@@ -11,7 +11,7 @@ concurrency:
 jobs:
   prepare-kernels:
     name: Prepare Kernels
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       matrix: ${{ steps.kernels.outputs.matrix }}
     steps:
@@ -98,7 +98,7 @@ jobs:
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
           sudo apt clean
-      - name: Checkout Brunch source code
+      - name: Checkout Brunch_-eloded source code
         uses: actions/checkout@v3
       - name: Download built kernels
         uses: actions/download-artifact@v3
@@ -132,13 +132,13 @@ jobs:
         with:
           name: brunch-build
       - name: Identify custom version
-        if: ${{ (github.repository != 'sebanc/brunch') && (github.repository != 'sebanc/brunch-unstable') }}
+        if: ${{ (github.repository != 'djfaizp/Brunch_-eloded') && (github.repository != 'djfaizp/Brunch_-eloded-unstable') }}
         run: echo "RELEASE_VERSION_TYPE=custom" >> $GITHUB_ENV
       - name: Identify unstable version
-        if: ${{ (github.repository == 'sebanc/brunch-unstable') }}
+        if: ${{ (github.repository == 'djfaizp/Brunch_-eloded-unstable') }}
         run: echo "RELEASE_VERSION_TYPE=unstable" >> $GITHUB_ENV
       - name: Identify stable version
-        if: ${{ (github.repository == 'sebanc/brunch') }}
+        if: ${{ (github.repository == 'djfaizp/Brunch_-eloded') }}
         run: echo "RELEASE_VERSION_TYPE=stable" >> $GITHUB_ENV
       - name: Generate release details
         run: |
