@@ -11,7 +11,7 @@ concurrency:
 jobs:
   prepare-kernels:
     name: Prepare Kernels
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     outputs:
       matrix: ${{ steps.kernels.outputs.matrix }}
     steps:
